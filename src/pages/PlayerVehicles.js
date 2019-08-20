@@ -10,14 +10,14 @@ class PlayerVehicles extends Component {
   }
 
   render() {
-    const { vehicles, loading } = this.props
+    const { vehicles, loading, match } = this.props
     return (
       <div>
         {
           loading ? (
             <p>Loading...</p>
           ) : (
-            <VehiclesList vehicles={vehicles} />
+            <VehiclesList vehicles={vehicles} match={match} />
           )
         }
       </div>
@@ -33,6 +33,8 @@ PlayerVehicles.propTypes = {
   vehicles: PropTypes.array,
   loading: PropTypes.bool,
   getPlayerVehicles: PropTypes.func,
+  match: PropTypes.object,
+
 }
 
 export default connect(mapStateToProps, {

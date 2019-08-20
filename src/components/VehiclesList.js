@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import VehiclePage from './VehiclePage'
+import VehicleDetails from './VehicleDetails'
 
 const List = styled.ul`
   display: flex;
@@ -24,15 +24,16 @@ const ListItem = styled.li`
 `
 
 
-const VehiclesList = ({ vehicles }) => (
+const VehiclesList = ({ vehicles, match }) => (
   <Router>
+      <Route path={`${match.path}/:id`} component={VehicleDetails} />
       <List>
         {
           vehicles.map(({ vehicleId, images, name }) => {
             const imgs = images ? JSON.parse(images) : null
             return (
               <ListItem key={vehicleId}>
-                <Link to={`/vehicle/${vehicleId}`}>
+                <Link to={`${match.url}/${vehicleId}`}>
                   {
                     imgs && <img src={imgs.preview} alt="" />
                   }
@@ -43,7 +44,6 @@ const VehiclesList = ({ vehicles }) => (
           })
         }
       </List>
-      <Route path="/vehicle/:id" component={VehiclePage} />
     </Router>
 )
 VehiclesList.propTypes = {
