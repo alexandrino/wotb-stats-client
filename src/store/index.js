@@ -1,7 +1,11 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import statsReducer from '../reducers'
-import { playerStatsSaga, playerVehiclesSaga } from '../sagas'
+import {
+  playerStatsSaga,
+  vehicleStatsSaga,
+  playerVehiclesSaga,
+} from '../sagas'
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -15,6 +19,7 @@ function configureStore() {
   )
 
   sagaMiddleware.run(playerStatsSaga)
+  sagaMiddleware.run(vehicleStatsSaga)
   sagaMiddleware.run(playerVehiclesSaga)
   return store
 }

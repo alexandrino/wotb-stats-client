@@ -35,7 +35,7 @@ const VehiclesList = ({ vehicles, match }) => (
               <ListItem key={vehicleId}>
                 <Link to={`${match.url}/${vehicleId}`}>
                   {
-                    imgs && <img src={imgs.preview} alt="" />
+                    imgs && <img src={imgs.preview} alt="Vehicle " />
                   }
                   <p>{ name }</p>
                 </Link>
@@ -48,6 +48,7 @@ const VehiclesList = ({ vehicles, match }) => (
 )
 VehiclesList.propTypes = {
   vehicles: PropTypes.array,
+  match: PropTypes.object,
 }
 
 export default VehiclesList

@@ -12,12 +12,18 @@ const fetchPlayerStats = async (playerId) => {
   return fetchApi(PLAYER_STATS_URL)
 }
 
+const fetchVehicleStats = async (vehicleId) => {
+  const PLAYER_STATS_URL = `${url}/player-vehicle?vehicleId=${vehicleId}`
+  return fetchApi(PLAYER_STATS_URL)
+}
+
 const fetchPlayerVehicles = async (playerId) => {
   const PLAYER_VEHICLES_URL = `${url}/player-vehicles?accountId=${playerId}`
   return fetchApi(PLAYER_VEHICLES_URL)
 }
 
 export default {
+  fetchVehicleStats,
   fetchPlayerStats,
   fetchPlayerVehicles,
 }
